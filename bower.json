@@ -1,0 +1,23 @@
+{
+  "name": "iyn",
+  "version": "0.0.1",
+  "homepage": "http://hollowmatt.gihub.io/iyn",
+  "authors": [
+    "Matthew Holloway <matthew.holloway@logicwerx.com>"
+  ],
+  "description": "In Your Neighborhood - a map and location highlight site",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.6.0",
+    "jquery": "~2.0.0",
+    "bootstrap": "~3.3.4",
+    "knockout": "~3.3.0"
+  }
+}
