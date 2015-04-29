@@ -9,7 +9,20 @@
   </head>
   <body>
     <!-- put everything after this line -->
-    <div id="map-canvas"></div>
+    <div id="main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+              <!--  -->
+              <p>Hello</p>
+          </div>
+          <div class="col-md-8">
+            <p>Hello</p>
+            <div id="map-canvas"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Put JS imports after this line -->
     <!-- Bower Components -->
     <script src="bower_components/jquery/jquery.min.js"></script>
@@ -17,6 +30,6 @@
     <script src="bower_components/knockout/dist/knockout.js"></script>
 
     <!-- Project JS files -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1FlnTGtIu1VKovgEZeme2NCXi4Oo11IE"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script src="js/iyn.js"></script>
 </html>
