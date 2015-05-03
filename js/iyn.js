@@ -1,46 +1,49 @@
 // This function initializes the Google Map to Mountain View, with a zoomed in view
+var map, places, place;
+var markers = [];
+var autocomplete;
+var countryRestrict = { 'country': 'us' };
+
+var countries = {
+  'us': {
+    center: new google.maps.LatLng(37.1,-95.7),
+    zoom: 3
+  }
+};
+
 function initialize() {
-  var mapOptions = {
-    center: { lat: 37.3894, lng: -122.0755},
-    zoom: 16
+
+	var mapOptions = {
+    zoom: countries['us'].zoom,
+    center: countries['us'].center,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   };
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
+
+  map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
-  	document.getElementById('legend'));
-  //  map.set('styles', [
-	//   {
-	//     featureType: 'road',
-	//     elementType: 'geometry',
-	//     stylers: [
-	//       { color: '#000000' },
-	//       { weight: 1.6 }
-	//     ]
-	//   }, {
-	//     featureType: 'road',
-	//     elementType: 'labels',
-	//     stylers: [
-	//       { saturation: -100 },
-	//       { invert_lightness: true }
-	//     ]
-	//   }, {
-	//     featureType: 'landscape',
-	//     elementType: 'geometry',
-	//     stylers: [
-	//       { hue: '#ffff00' },
-	//       { gamma: 1.4 },
-	//       { saturation: 82 },
-	//       { lightness: 96 }
-	//     ]
-	//   }, {
-	//     featureType: 'poi.school',
-	//     elementType: 'geometry',
-	//     stylers: [
-	//       { hue: '#fff700' },
-	//       { lightness: -15 },
-	//       { saturation: 99 }
-	//     ]
-	//   }
-	// ]);
+
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
+    types: [ '(cities)' ],
+    componentRestrictions: countryRestrict
+  });
+
+  places = new google.maps.places.PlacesService(map);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    place_changed();
+  });
+
 }
+
+function place_changed() {
+  place = autocomplete.getPlace();
+  console.log(place.geometry.location);
+  map.panTo(place.geometry.location);
+  map.setZoom(16);
+  // search();
+}
+
+
+
+
 google.maps.event.addDomListener(window, 'load', initialize);
