@@ -8,3 +8,10 @@ html, body, #map-canvas {
   background: white;
   padding: 10px;
 }
+
+#locationField {
+	border: 1px solid green;
+  overflow: hidden;
+  margin: 5px;
+  padding: 2px;
+}

@@ -17,3 +17,4 @@ http://gmaps-samples-v3.googlecode.com/svn/trunk/places/autocomplete-hotel-searc
 http://gmaps-samples-v3.googlecode.com/svn/trunk/sidebar/random-markers.html
 http://gmaps-samples-v3.googlecode.com/svn/trunk/infowindow_custom/infowindow-custom.html
 http://gmaps-samples-v3.googlecode.com/svn/trunk/fusiontables/cycletrails.html
+http://gmaps-samples-v3.googlecode.com/svn/trunk/places/place-icons.html
