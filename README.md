@@ -16,3 +16,4 @@ http://gmaps-samples-v3.googlecode.com/svn/trunk/pirates/
 http://gmaps-samples-v3.googlecode.com/svn/trunk/places/autocomplete-hotel-search.html
 http://gmaps-samples-v3.googlecode.com/svn/trunk/sidebar/random-markers.html
 http://gmaps-samples-v3.googlecode.com/svn/trunk/infowindow_custom/infowindow-custom.html
+http://gmaps-samples-v3.googlecode.com/svn/trunk/fusiontables/cycletrails.html
