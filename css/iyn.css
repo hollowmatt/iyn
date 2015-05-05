@@ -1,11 +1,17 @@
-* {
+/** {
 		border: 1px solid green;
 }
-
+*/
 html, body, #map-canvas {
   height: 600px;
   width: 100%;
   padding-bottom: 5%;
+}
+
+#content-header {
+	background-color: darkGray;
+	color: white;
+	margin-bottom: 10px;
 }
 
 #legend {
@@ -17,4 +23,9 @@ html, body, #map-canvas {
   overflow: hidden;
   margin: 5px;
   padding: 2px;
+}
+
+#autocomplete {
+	color: darkGray;
+	width: 100%;
 }
