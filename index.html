@@ -23,8 +23,19 @@
         </div> 
         <div class="row">
           <div class="col-md-2">
-              <!--  -->
-              <p>Hello</p>
+              <!-- This will be a filter secion, with a list of results -->
+              <div id="filter">
+               <select data-bind="options:markers,
+                                  optionsCaption: 'Select Filter',
+                                  optionsText: 'name',
+                                  value:chosenMarker"></select>
+                <button data-bind="enable:chosenMarker,
+                                   click:resetMarker">Clear</button> 
+              </div>
+              <hr>
+              <div id="filteredList">
+                <!-- Populate this area with the results from the chosen city -->
+              </div>
           </div>
           <div class="col-md-10">
             <div id="map-canvas"></div>

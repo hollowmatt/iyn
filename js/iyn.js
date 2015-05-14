@@ -3,6 +3,7 @@
 	var map, places, place;
 	var markers = [];
 	var autocomplete;
+	var mapfilter = { "1": "All", "2": "Restaurants", "3": "Bars" };
 	var countryRestrict = { 'country': 'us' };
 
 	var countries = {
@@ -33,7 +34,6 @@
 	  google.maps.event.addListener(autocomplete, 'place_changed', function() {
 	    place_changed();
 	  });
-
 	}
 
 	function place_changed() {
@@ -43,6 +43,25 @@
 	  map.setZoom(16);
 	  // search();
 	}
+
+	function filterModel() {
+		this.markers = [
+			{ "name": "All" },
+			{ "name": "Restaurants" },
+			{ "name": "Bars" }];
+		this.chosenMarker = ko.observable();
+		this.resetMarker = function() { this.chosenMarker(null)};
+	}
+
+	function addMarkers() {
+		var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hello World!'
+  	});
+	}
 	
+	//Do the good stuff
+	ko.applyBindings(new filterModel());
 	google.maps.event.addDomListener(window, 'load', initialize);
 })();
