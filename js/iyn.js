@@ -5,43 +5,38 @@
 	var autocomplete;
 	var mapfilter = { "1": "All", "2": "Restaurants", "3": "Bars" };
 	var countryRestrict = { 'country': 'us' };
-
-	var countries = {
-	  'us': {
-	    center: new google.maps.LatLng(37.1,-95.7),
-	    zoom: 3
-	  }
+	var markers = {
+		"places" :[
+			{"type": "Bar", "name": "Tied House", "lat": "38.4", "lon": "-122.1", "content": "Makes great beer"},
+			{"type": "Restaurant", "name": "Starbucks", "lat": "37.38626", "lon": "-122.085", "content": "Makes great coffee"}
+		]
 	};
 
+
 	function initialize() {
+		var mountainView =  new google.maps.LatLng(37.3860517,-122.0838511); //Mountain View, CA
 
 		var mapOptions = {
-	    zoom: countries['us'].zoom,
-	    center: countries['us'].center,
-	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	    zoom: 15,
+	    center: mountainView
 	  };
 
-	  map = new google.maps.Map(document.getElementById('map-canvas'),
-	      mapOptions);
+	  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-	  autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
-	    types: [ '(cities)' ],
-	    componentRestrictions: countryRestrict
-	  });
-
-	  places = new google.maps.places.PlacesService(map);
-
-	  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-	    place_changed();
-	  });
-	}
-
-	function place_changed() {
-	  place = autocomplete.getPlace();
-	  console.log(place.geometry.location);
-	  map.panTo(place.geometry.location);
-	  map.setZoom(16);
-	  // search();
+	  for (var place in markers.places) {
+			var marker = new google.maps.Marker({
+	      position: mountainView,
+	      map: map,
+	      title: markers.places[place].name
+	  	});
+	  	var infoWindow = new google.maps.InfoWindow({
+	  		content: markers.places[place].content
+	  	});
+	  	google.maps.event.addDomListener(marker, 'click', function() {
+	  		infoWindow.open(map, marker);
+	  	});
+	  	console.log(marker);
+	  }
 	}
 
 	function filterModel() {
@@ -54,13 +49,19 @@
 	}
 
 	function addMarkers() {
-		var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Hello World!'
-  	});
+		for (var place in markers.places) {
+			console.log(markers.places[place].lat + "," + markers.places[place].lon);
+			var myLatlng = google.maps.LatLng(markers.places[place].lat, markers.places[place].lon);
+
+			var marker = new google.maps.Marker({
+	      position: myLatlng,
+	      map: map,
+	      title: markers.places[place].name
+	  	});
+	  	console.log(marker);
+		}
 	}
-	
+
 	//Do the good stuff
 	ko.applyBindings(new filterModel());
 	google.maps.event.addDomListener(window, 'load', initialize);

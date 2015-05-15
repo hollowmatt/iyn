@@ -14,13 +14,10 @@
         <div class="row" id="content-header">
           <div id="locationField">
             <div class="col-md-2" align='right'>
-              <span>Enter a US City:</span>
+              <span>Mountain View: Things to see and do</span>
             </div>
-            <div class="col-md-10">
-              <input id="autocomplete" placeholder="Enter a city" type="text"/>
-            </div>
-          </div> 
-        </div> 
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-2">
               <!-- This will be a filter secion, with a list of results -->
@@ -30,7 +27,7 @@
                                   optionsText: 'name',
                                   value:chosenMarker"></select>
                 <button data-bind="enable:chosenMarker,
-                                   click:resetMarker">Clear</button> 
+                                   click:resetMarker">Clear</button>
               </div>
               <hr>
               <div id="filteredList">
