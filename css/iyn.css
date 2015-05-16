@@ -29,3 +29,8 @@ html, body, #map-canvas {
 	color: darkGray;
 	width: 100%;
 }
+
+#title {
+  font-weight: bold;
+  font-size: 14pt;
+}
