@@ -32,6 +32,9 @@
 	  	name = markers.places[place].name;
 	  	addMarker(currLoc, info, name);
 	  }
+	  $.getJSON('./data/mapdata.json', function(json) {
+	  	console.log(json);
+	  });
 	}
 
 	// Filter the markers
