@@ -1,4 +1,5 @@
 // This function initializes the Google Map to Mountain View, with a zoomed in view
+var jsonData;
 (function() {
 	var map;
 	var mapfilter = { "1": "All", "2": "Restaurants", "3": "Bars" };
@@ -10,6 +11,7 @@
 
 		]
 	};
+	// var jsonData;
 
 	// Setup initial page, with map centered on Mountain View, CA
 	function initialize() {
@@ -32,9 +34,22 @@
 	  	name = markers.places[place].name;
 	  	addMarker(currLoc, info, name);
 	  }
-	  $.getJSON('./data/mapdata.json', function(json) {
-	  	console.log(json);
-	  });
+
+		jsonData = (function () {
+	    jsonData = null;
+	    $.ajax({
+	        'async': false,
+	        'global': false,
+	        'url': './data/mapdata.json',
+	        'dataType': "json",
+	        'success': function (data) {
+	            jsonData = data;
+	    		}
+    	});
+    	return jsonData;
+		})();
+
+		console.log(jsonData);
 	}
 
 	// Filter the markers
@@ -45,6 +60,13 @@
 			{ "name": "Bars" }];
 		this.chosenMarker = ko.observable();
 		this.resetMarker = function() { this.chosenMarker(null)};
+	}
+
+	//city selector
+	function cityModal() {
+		this.cities = jsonData.cities;
+		this.chosenCity = ko.observable();
+		this.setMap = function() { console.log(this)};
 	}
 
 	// Add a marker

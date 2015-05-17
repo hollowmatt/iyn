@@ -34,3 +34,11 @@ html, body, #map-canvas {
   font-weight: bold;
   font-size: 14pt;
 }
+
+#city-select {
+  color: black;
+}
+
+.iyn-button {
+  background-color: white;
+}
