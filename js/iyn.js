@@ -1,5 +1,4 @@
 // This function initializes the Google Map to Mountain View, with a zoomed in view
-var jsonData;
 (function() {
 	var map;
 	var mapfilter = { "1": "All", "2": "Restaurants", "3": "Bars" };
@@ -11,7 +10,17 @@ var jsonData;
 
 		]
 	};
-	// var jsonData;
+	var jsonData;
+
+	/*
+		Plan:
+			1) Load the JSON data file
+			2) Present a 'city' selector on the screen
+			3) on change, load the map from the selected city's data
+			4) place the markers on the map
+		IF:
+			there is already a set of data in memory, changing the city will update the data.
+	*/
 
 	// Setup initial page, with map centered on Mountain View, CA
 	function initialize() {
@@ -38,7 +47,7 @@ var jsonData;
 		jsonData = (function () {
 	    jsonData = null;
 	    $.ajax({
-	        'async': false,
+	        'async': true,
 	        'global': false,
 	        'url': './data/mapdata.json',
 	        'dataType': "json",
@@ -48,8 +57,6 @@ var jsonData;
     	});
     	return jsonData;
 		})();
-
-		console.log(jsonData);
 	}
 
 	// Filter the markers
