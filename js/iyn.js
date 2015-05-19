@@ -8,13 +8,7 @@
 	// Setup initial page, with map centered on Mountain View, CA
 	function initialize() {
 
-		var defaultCity =  new google.maps.LatLng(jsonData.cities[0].lat,jsonData.cities[0].lon); //element zero
-		var mapOptions = {
-	    zoom: 13,
-	    center: defaultCity
-	  };
-
-	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		buildMap(jsonData.cities[0].lat, jsonData.cities[0].lon, jsonData.cities[0].zoom);
 
 	  //add marker on click
 	  google.maps.event.addListener(map, 'click', function(event) {
@@ -28,6 +22,20 @@
 	  // }
 	}
 
+	/***
+	 * Setup the map
+	 *	- Take in the lat/lon for the map
+	 *  - setup the map options
+	 ***/
+	function buildMap(lat, lon, zoom) {
+		var defaultCity =  new google.maps.LatLng(lat,lon); //element zero
+		var mapOptions = {
+	    zoom: zoom,
+	    center: defaultCity
+	  };
+
+	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	}
 	/***
 	 * This is the KnockoutJS model for the page
 	 *	 - Filter the markers

@@ -5,6 +5,7 @@ function getMapData() {
         "Name": "New York, NY",
         "lat": "40.73384312330757",
         "lon": "-73.99001970728763",
+        "zoom": 13,
         "places" :[
           {
             "type": "Bar",
@@ -33,6 +34,7 @@ function getMapData() {
         "Name": "Mountain View, CA",
         "lat": "37.3860517",
         "lon": "-122.0838511",
+        "zoom": 15,
         "places" :[
           {
             "type": "Bar",
@@ -61,6 +63,7 @@ function getMapData() {
         "Name": "Pittsburgh, PA",
         "lat": "40.73384312330757",
         "lon": "-73.99001970728763",
+        "zoom": 15,
           "places" :[
           {
             "type": "Bar",
