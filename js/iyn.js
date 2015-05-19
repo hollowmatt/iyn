@@ -1,34 +1,17 @@
 // This function initializes the Google Map to Mountain View, with a zoomed in view
 (function() {
 	var map;
-	var mapfilter = { "1": "All", "2": "Restaurants", "3": "Bars" };
-	var markers = {
-		"places" :[
-			{"type": "Bar", "name": "Tied House", "lat": "37.394575342727734", "lon": "-122.08069235086441", "content": "Makes great beer"},
-			{"type": "Bar", "name": "Steins Beer Garden", "lat": "37.39407883199609", "lon": "-122.07989037036896", "content": "Makes great beer"},
-			{"type": "Restaurant", "name": "Starbucks", "lat": "37.38754504105412", "lon": "-122.08302319049835", "content": "Makes great coffee"},
-
-		]
-	};
-	var jsonData;
-
-	/*
-		Plan:
-			1) Load the JSON data file
-			2) Present a 'city' selector on the screen
-			3) on change, load the map from the selected city's data
-			4) place the markers on the map
-		IF:
-			there is already a set of data in memory, changing the city will update the data.
-	*/
+	//Load data from JSON
+	var mapfilter = getMapFilters();
+	var jsonData = getMapData();
 
 	// Setup initial page, with map centered on Mountain View, CA
 	function initialize() {
-		var mountainView =  new google.maps.LatLng(37.3860517,-122.0838511); //Mountain View, CA
 
+		var defaultCity =  new google.maps.LatLng(jsonData.cities[0].lat,jsonData.cities[0].lon); //element zero
 		var mapOptions = {
-	    zoom: 15,
-	    center: mountainView
+	    zoom: 13,
+	    center: defaultCity
 	  };
 
 	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -37,40 +20,31 @@
 	  google.maps.event.addListener(map, 'click', function(event) {
 	  	addMarker(event.latLng);
 	  });
-	  for (var place in markers.places) {
-	  	currLoc = new google.maps.LatLng(markers.places[place].lat, markers.places[place].lon);
-	  	info = markers.places[place].content;
-	  	name = markers.places[place].name;
-	  	addMarker(currLoc, info, name);
-	  }
-
-		jsonData = (function () {
-	    jsonData = null;
-	    $.ajax({
-	        'async': true,
-	        'global': false,
-	        'url': './data/mapdata.json',
-	        'dataType': "json",
-	        'success': function (data) {
-	            jsonData = data;
-	    		}
-    	});
-    	return jsonData;
-		})();
+	  // for (var place in markers.places) {
+	  // 	currLoc = new google.maps.LatLng(markers.places[place].lat, markers.places[place].lon);
+	  // 	info = markers.places[place].content;
+	  // 	name = markers.places[place].name;
+	  // 	addMarker(currLoc, info, name);
+	  // }
 	}
 
-	// Filter the markers
+	/***
+	 * This is the KnockoutJS model for the page
+	 *	 - Filter the markers
+	 *	 - load the City selector
+	 ***/
 	function filterModel() {
+		//Filters for the markers
 		this.markers = [
 			{ "name": "All" },
 			{ "name": "Restaurants" },
 			{ "name": "Bars" }];
 		this.chosenMarker = ko.observable();
 		this.resetMarker = function() { this.chosenMarker(null)};
-	}
 
-	//city selector
-	function cityModal() {
+		//Load the city selector
+		console.log("Put out the cities");
+		console.log(jsonData);
 		this.cities = jsonData.cities;
 		this.chosenCity = ko.observable();
 		this.setMap = function() { console.log(this)};
@@ -103,7 +77,11 @@
 		marker.setVisible(false);
 	}
 
-	//Do the good stuff
+	/***
+	 * Do the good stuff here
+	 *	//1: Setup the KnockoutJS model for the lists
+	 *	//2: Call our initialize function
+	 ***/
 	ko.applyBindings(new filterModel());
 	google.maps.event.addDomListener(window, 'load', initialize);
 })();
