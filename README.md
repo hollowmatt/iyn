@@ -20,3 +20,7 @@ http://gmaps-samples-v3.googlecode.com/svn/trunk/fusiontables/cycletrails.html
 http://gmaps-samples-v3.googlecode.com/svn/trunk/places/place-icons.html
 http://www.morethanamap.com/
 https://developers.google.com/maps/documentation/javascript/examples/
+
+## API links and info
+https://developer.foursquare.com/
+https://www.yelp.com/developers
