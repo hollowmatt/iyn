@@ -70,7 +70,7 @@ function getMapData() {
             "name": "Kaya",
             "lat": "40.45109460901854",
             "lon": "-79.98545363545418",
-            "content": "West Indies food sensation - vegan friendly"
+            "content": "<p><b>Kaya</b></p><p>West Indies food sensation - vegan friendly <a href='http://www.kaya.com'>visit</a></p>"
           },
           {
             "type": "Bar",
