@@ -42,3 +42,31 @@ html, body, #map-canvas {
 .iyn-button {
   background-color: white;
 }
+
+/*Info Box Styling - for the infobox on map markers*/
+
+.infobox {
+  font-weight: lighter;
+  color: #00008B;
+}
+
+.infotitle {
+  font-weight: bold;
+  color: #483D8B;
+}
+
+.infobody {
+  padding: 2px;
+}
+
+.infourl {
+  color: #4169E1;
+  text-decoration: none;
+}
+
+.infourl:hover {
+  color: #663399;
+  font-weight: bold;
+}
+
+/* end of Info Box */

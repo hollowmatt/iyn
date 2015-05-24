@@ -103,7 +103,7 @@
   	});
 
 		var infoWindow = new google.maps.InfoWindow({
-			content: info
+			content: info.join('')
 		});
 
   	google.maps.event.addDomListener(marker, 'click', function() {

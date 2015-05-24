@@ -70,7 +70,9 @@ function getMapData() {
             "name": "Kaya",
             "lat": "40.45109460901854",
             "lon": "-79.98545363545418",
-            "content": "<p><b>Kaya</b></p><p>West Indies food sensation - vegan friendly <a href='http://www.kaya.com'>visit</a></p>"
+            "content": ["<div class='infobox'><div class='infotitle'><span>Kaya Restaurant</span></div>",
+                        "<div class='infobody'><p>West Indies food sensation - vegan friendly</p></div>",
+                        "<div class='infourl'><a href='http://www.bigburrito.com/kaya/'>visit</a></div></div>"]
           },
           {
             "type": "Bar",
