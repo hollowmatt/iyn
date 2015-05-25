@@ -71,22 +71,33 @@ function getMapData() {
             "lat": "40.45109460901854",
             "lon": "-79.98545363545418",
             "content": ["<div class='infobox'><div class='infotitle'><span>Kaya Restaurant</span></div>",
+                        "<img src='http://www.bigburrito.com/kaya/i/structure/logo_f2.gif' class='infoimage'>",
                         "<div class='infobody'><p>West Indies food sensation - vegan friendly</p></div>",
-                        "<div class='infourl'><a href='http://www.bigburrito.com/kaya/'>visit</a></div></div>"]
+                        "<div class='infourl'><a href='http://www.bigburrito.com/kaya/'>visit</a></div></div>"],
+            "yelp": "http://api.yelp.com/v2/search/?term=Kaya Restaurant&location=Pittsburgh, PA&limit=1"
+
           },
           {
             "type": "Bar",
             "name": "Tonic",
             "lat": "40.44369742276764",
             "lon": "-79.99541569501162",
-            "content": "Makes great martinis"
+            "content": ["<div class='infobox'><div class='infotitle'><span>Tonic Bar and Grill</span></div>",
+                        "<img src='http://www.tonicpittsburgh.com/images/gallery%20images-13100x77.jpg' class='infoimage'>",
+                        "<div class='infobody'><p>Traditional bar and grill with a 'Tonic Twist'</p></div>",
+                        "<div class='infourl'><a href='http://www.tonicpittsburgh.com'>visit</a></div></div>"],
+            "yelp" : "http://api.yelp.com/v2/search/?term=tonic bar and grill&location=pittsburgh, pa&limit=1"
           },
           {
             "type": "Restaurant",
             "name": "Zenith",
             "lat": "40.426466824353994",
             "lon": "-79.96901705861092",
-            "content": "Great Vegan Sunday Buffet"
+            "content": ["<div class='infobox'><div class='infotitle'><span>The Zenith</span></div>",
+                        "<img src='http://zenithpgh.com/wordpress/wp-content/uploads/2011/09/logo1.jpg' class='infoimage'>",
+                        "<div class='infobody'><p>Vegitarian Cafe * Art Gallery * Antique Goldmine</p></div>",
+                        "<div class='infourl'><a href='http://zenithpgh.com'>visit</a></div></div>"],
+            "yelp": "http://api.yelp.com/v2/search/?term=the zenith&location=pittsburgh, pa&limit=1"
           }
         ]
       }

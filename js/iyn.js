@@ -9,7 +9,15 @@
 	var map;
 	var mapfilter = getMapFilters();
 	var jsonData = getMapData();
-
+	var auth = {
+		consumerKey: "<consumerKey>",
+		consumerSecret: "<consumerSecret>",
+		accessToken: "<accessToken>",
+		accessTokenSecret: "<accessTokenSecret>",
+		serviceProvider: {
+			signatureMethod: "HMAC-SHA1"
+		}
+	};
 
 	/***
 	 * initialize()
@@ -80,7 +88,7 @@
 	function addMarkers(markers) {
 		for (var location in markers) {
 			loc = new google.maps.LatLng(markers[location].lat, markers[location].lon);
-			addMarker(loc, markers[location].content, markers[location].name);
+			addMarker(loc, markers[location].content, markers[location].yelp, markers[location].name);
 		}
 	}
 
@@ -91,12 +99,19 @@
 	 *	 - info is what shows up in the box when you click the marker
 	 *	 - name is the name of the location
 	 ***/
-	function addMarker(location, info, name) {
+	function addMarker(location, info, yelp, name) {
 		var marker = new google.maps.Marker({
 			position: location,
 			map: map,
 			title: name
 		});
+
+		if (yelp) {
+			yelpinfo = getYelpInfo(yelp);
+			for (var i = 0; i < yelpinfo.length; i++) {
+				info.push(yelpinfo[i]);
+			};
+		}
 
 		google.maps.event.addDomListener(marker, 'rightclick', function() {
   		removeMarker(marker);
@@ -109,6 +124,60 @@
   	google.maps.event.addDomListener(marker, 'click', function() {
   		infoWindow.open(map, marker);
   	})
+	}
+
+	/***
+	 * getYelpInfo(query)
+	 *	This will make an API call to yelp to get content back, to insert into
+	 *	the marker InfoBox
+	 ***/
+	function getYelpInfo(query) {
+		// This chunk of code comes from a GoogleGroups forum on using Yelp v2 API with JS
+		// https://groups.google.com/forum/#!topic/yelp-developer-support/5bDrWXWJsqY
+		// Yelp API is complicated: https://www.yelp.com/developers/documentation/v2/authentication
+		var parameters = [];
+		parameters.push(['callback', 'cb']);
+		parameters.push(['oauth_consumer_key', auth.consumerKey]);
+    parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
+    parameters.push(['oauth_token', auth.accessToken]);
+    parameters.push(['oauth_signature_method', 'HMAC-SHA1']);
+
+    var accessor = {
+      consumerSecret : auth.consumerSecret,
+      tokenSecret : auth.accessTokenSecret
+    };
+
+    var message = {
+    	'action': query,
+    	'method': 'GET',
+    	'parameters': parameters
+    };
+
+    OAuth.setTimestampAndNonce(message);
+    OAuth.SignatureMethod.sign(message, accessor);
+
+    var parameterMap = OAuth.getParameterMap(message.parameters);
+    console.log(parameterMap);
+
+    var yelpResults = [];
+		$.ajax({
+			 url: message.action,
+			 async: false,
+			 data: parameterMap,
+			 dataType: "jsonp",
+			 cache: true
+		}).success(function(data, textStats, XMLHttpReqeust) {
+			var busPhone = data.businesses[0].display_phone;
+			var busRating = data.businesses[0].rating_img_url;
+			yelpResults.push("<div class='infoyelplogo'><img src='images/yelp_logo_75x38.png");
+			yelpResults.push("<p>Phone number: " + busPhone + "</p>");
+			yelpResults.push("<p><img src='" + busRating + "'>");
+			console.log(yelpResults);
+			return yelpResults;
+		}).error(function(e) {
+			console.log("an error has occured");
+			console.log(e);
+		});
 	}
 
 	/***
