@@ -9,6 +9,7 @@
 	var map;
 	var mapfilter = getMapFilters();
 	var jsonData = getMapData();
+	//Removed keys
 	var auth = {
 		consumerKey: "<consumerKey>",
 		consumerSecret: "<consumerSecret>",
@@ -106,12 +107,7 @@
 			title: name
 		});
 
-		if (yelp) {
-			yelpinfo = getYelpInfo(yelp);
-			for (var i = 0; i < yelpinfo.length; i++) {
-				info.push(yelpinfo[i]);
-			};
-		}
+
 
 		google.maps.event.addDomListener(marker, 'rightclick', function() {
   		removeMarker(marker);
@@ -123,6 +119,9 @@
 
   	google.maps.event.addDomListener(marker, 'click', function() {
   		infoWindow.open(map, marker);
+  		if (yelp) {
+				getYelpInfo(yelp, name);
+			}
   	})
 	}
 
@@ -131,10 +130,12 @@
 	 *	This will make an API call to yelp to get content back, to insert into
 	 *	the marker InfoBox
 	 ***/
-	function getYelpInfo(query) {
+	function getYelpInfo(query, name) {
 		// This chunk of code comes from a GoogleGroups forum on using Yelp v2 API with JS
 		// https://groups.google.com/forum/#!topic/yelp-developer-support/5bDrWXWJsqY
 		// Yelp API is complicated: https://www.yelp.com/developers/documentation/v2/authentication
+		var $yelpElem = $('#' + name);
+
 		var parameters = [];
 		parameters.push(['callback', 'cb']);
 		parameters.push(['oauth_consumer_key', auth.consumerKey]);
@@ -159,21 +160,17 @@
     var parameterMap = OAuth.getParameterMap(message.parameters);
     console.log(parameterMap);
 
-    var yelpResults = [];
-		$.ajax({
+    $.ajax({
 			 url: message.action,
-			 async: false,
 			 data: parameterMap,
 			 dataType: "jsonp",
 			 cache: true
-		}).success(function(data, textStats, XMLHttpReqeust) {
+		}).success(function(data) {
 			var busPhone = data.businesses[0].display_phone;
-			var busRating = data.businesses[0].rating_img_url;
-			yelpResults.push("<div class='infoyelplogo'><img src='images/yelp_logo_75x38.png");
-			yelpResults.push("<p>Phone number: " + busPhone + "</p>");
-			yelpResults.push("<p><img src='" + busRating + "'>");
-			console.log(yelpResults);
-			return yelpResults;
+			var busRating = data.businesses[0].rating_img_url
+			$yelpElem.append("<div class='infoyelplogo'><img src='images/yelp_logo_75x38.png'>");
+			$yelpElem.append("<p>Phone number: " + busPhone + "</p>");
+			$yelpElem.append("<p><img src='" + busRating + "'>");
 		}).error(function(e) {
 			console.log("an error has occured");
 			console.log(e);
