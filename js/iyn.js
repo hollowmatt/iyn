@@ -29,6 +29,8 @@
 	function initialize() {
 		//build the map with the first city
 		buildMap(jsonData.cities[0].lat, jsonData.cities[0].lon, jsonData.cities[0].zoom);
+		//set title
+		setTitle(jsonData.cities[0].Name);
 	  //add markers to the map from the data
 	  addMarkers(jsonData.cities[0].places);
 	}
@@ -56,6 +58,15 @@
 	}
 
 	/***
+	 * setTitle(city)
+	 * 	Set the header title
+	 *	- Take in the city name to put in the title
+	 ***/
+	function setTitle(city) {
+		$('#title').text(city + ": Things to see and do");
+	}
+
+	/***
 	 * filterModel()
 	 *	This is the KnockoutJS model for the page
 	 *	 - Filter the markers
@@ -77,6 +88,7 @@
 		self.chosenCity = ko.observable();
 		self.chosenCity.subscribe(function() {
 			buildMap(self.chosenCity().lat, self.chosenCity().lon, self.chosenCity().zoom);
+			setTitle(self.chosenCity().Name);
 			addMarkers(self.chosenCity().places);
 		});
 	}
@@ -89,7 +101,7 @@
 	function addMarkers(markers) {
 		for (var location in markers) {
 			loc = new google.maps.LatLng(markers[location].lat, markers[location].lon);
-			addMarker(loc, markers[location].content, markers[location].yelp, markers[location].name);
+			addMarker(loc, markers[location].content, markers[location].yelp, markers[location].name, markers[location].title);
 		}
 	}
 
@@ -100,11 +112,11 @@
 	 *	 - info is what shows up in the box when you click the marker
 	 *	 - name is the name of the location
 	 ***/
-	function addMarker(location, info, yelp, name) {
+	function addMarker(location, info, yelp, name, title) {
 		var marker = new google.maps.Marker({
 			position: location,
 			map: map,
-			title: name
+			title: title
 		});
 
 
@@ -119,6 +131,7 @@
 
   	google.maps.event.addDomListener(marker, 'click', function() {
   		infoWindow.open(map, marker);
+
   		if (yelp) {
 				getYelpInfo(yelp, name);
 			}
@@ -168,7 +181,7 @@
 		}).success(function(data) {
 			var busPhone = data.businesses[0].display_phone;
 			var busRating = data.businesses[0].rating_img_url
-			$yelpElem.append("<div class='infoyelplogo'><img src='images/yelp_logo_75x38.png'>");
+			$yelpElem.append("<div class='infoyelplogo'><img src='images/yelp_logo_75x38.png'></div>");
 			$yelpElem.append("<p>Phone number: " + busPhone + "</p>");
 			$yelpElem.append("<p><img src='" + busRating + "'>");
 		}).error(function(e) {
