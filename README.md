@@ -2,13 +2,12 @@
 IYN: In Your Neighborhood
 
 ## TODO:
- - Add Navbar
  - Add Search
- - Add Filters
+ - Activate Filters
+ -- remove markers not matching filter
  - Add Result List
- - Add Foursquare API results
- - Add Yelp Reviews API results
- - Figure out how to make map full-screen, with controls on top
+ - Fix Yelp Reviews API results to show only one time (only first time infobox is clicked)
+
 
 ## Sites Used for Reference
 https://developers.google.com/maps/tutorials/customizing/
@@ -22,5 +21,5 @@ http://www.morethanamap.com/
 https://developers.google.com/maps/documentation/javascript/examples/
 
 ## API links and info
-https://developer.foursquare.com/
 https://www.yelp.com/developers
+https://www.yelp.com/developers/api_console
