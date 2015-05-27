@@ -9,24 +9,40 @@ function getMapData() {
         "places" :[
           {
             "type": "Bar",
-            "name": "8th St. Wine Cellar",
+            "title": "8th St. Wine Cellar",
+            "name": "WineCellar",
             "lat": "40.73268976628568",
             "lon": "-73.997558131814",
-            "content": "A great place for wine"
+            "content": ["<div class='infobox' id='WineCellar'><div class='infotitle'><span>8th Street Wine Cellar</span></div>",
+                        "<img src='http://8thstwinecellar.com/webpages/images/photos_bar.gif' class='infoimage'>",
+                        "<div class='infobody'><p>Wine Cellar isn't the place where you can drink under the table",
+                        ", because you're already under the floor.</p></div>",
+                        "<div class='infourl'><a href='http://8thstwinecellar.com/'>visit</a></div></div>"],
+            "yelp": "http://api.yelp.com/v2/search/?term=8th street wine cellar&location=New York, NY&limit=1"
           },
           {
             "type": "Restaurant",
+            "title": "Peacefood",
             "name": "Peacefood",
             "lat": "40.73296618251578",
             "lon": "-73.99279452860355",
-            "content": "Amazing Vegan food!"
+            "content": ["<div class='infobox' id='Peacefood'><div class='infotitle'><span>Peacefood Cafe</span></div>",
+                        "<img src='http://www.peacefoodcafe.com/wp/wp-content/themes/peacefoodcafe/images/nav_logo.png' class='infoimage'>",
+                        "<div class='infobody'><p>A vegan kitchen and bakery</p></div>",
+                        "<div class='infourl'><a href='http://www.peacefoodcafe.com/'>visit</a></div></div>"],
+            "yelp": "http://api.yelp.com/v2/search/?term=Peacefood&location=New York, NY&limit=1"
           },
           {
             "type": "Restaurant",
-            "name": "Blossom du Jour",
+            "title": "Blossom du Jour",
+            "name": "Blossom",
             "lat": "40.76097582376582",
             "lon": "-73.99082377552986",
-            "content": "Great fast vegan take-out"
+            "content": ["<div class='infobox' id='Blossom'><div class='infotitle'><span>Blossom Du Jour</span></div>",
+                        "<img src='http://www.blossomdujour.com/bdj-logo.png' class='infoimage'>",
+                        "<div class='infobody'><p>Vegan Fast Food - as healthy as you want to be</p></div>",
+                        "<div class='infourl'><a href='http://www.blossomdujour.com/'>visit</a></div></div>"],
+            "yelp": "http://api.yelp.com/v2/search/?term=Blossom du jour&location=times square New York, NY&limit=1"
           }
         ]
       },
@@ -38,24 +54,39 @@ function getMapData() {
         "places" :[
           {
             "type": "Bar",
-            "name": "Tied House",
+            "title": "Tied House",
+            "name": "TiedHouse",
             "lat": "37.394575342727734",
             "lon": "-122.08069235086441",
-            "content": "Makes great beer"
+            "content": ["<div class='infobox' id='TiedHouse'><div class='infotitle'><span>Tied House Cafe and Brewery</span></div>",
+                        "<img src='http://tiedhouse.com/wp-content/uploads/2012/04/Headerbar19871.jpg' class='infoimage'>",
+                        "<div class='infobody'><p>The South Bay's original microbrewery</p></div>",
+                        "<div class='infourl'><a href='http://tiedhouse.com/'>visit</a></div></div>"],
+            "yelp": "http://api.yelp.com/v2/search/?term=tied house&location=mountain view, ca&limit=1"
           },
           {
             "type": "Bar",
-            "name": "Steins Beer Garden",
+            "title": "Steins Beer Garden",
+            "name": "Steins",
             "lat": "37.39407883199609",
             "lon": "-122.07989037036896",
-            "content": "Makes great beer"
+            "content": ["<div class='infobox' id='Steins'><div class='infotitle'><span>Steins Beer Garden</span></div>",
+                        "<img src='http://steinsbeergarden.com/steinsfour/wp-content/uploads/2014/09/steins-cap.png' class='infoimage'>",
+                        "<div class='infobody'><p>A modern American take on the classic German biergarten</p></div>",
+                        "<div class='infourl'><a href='http://steinsbeergarden.com/'>visit</a></div></div>"],
+            "yelp": "http://api.yelp.com/v2/search/?term=Steins Beer Garden&location=mountain view, ca&limit=1"
           },
           {
             "type": "Restaurant",
+            "title": "Starbucks",
             "name": "Starbucks",
             "lat": "37.38754504105412",
             "lon": "-122.08302319049835",
-            "content": "Makes great coffee"
+            "content": ["<div class='infobox' id='Starbucks'><div class='infotitle'><span>Starbucks Coffee Company</span></div>",
+                        "<img src='http://www.starbucks.com/static/images/global/logo.svg' class='infoimage'>",
+                        "<div class='infobody'><p>Share great coffee with your friends and help make the world a little better.</p></div>",
+                        "<div class='infourl'><a href='http://www.starbucks.com/'>visit</a></div></div>"],
+            "yelp": "http://api.yelp.com/v2/search/?term=Starbucks&location=mountain view, ca&limit=1"
           }
         ]
       },
