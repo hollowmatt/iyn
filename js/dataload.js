@@ -98,6 +98,7 @@ function getMapData() {
           "places" :[
           {
             "type": "Restaurant",
+            "title": "Kaya Restaurant",
             "name": "Kaya",
             "lat": "40.45109460901854",
             "lon": "-79.98545363545418",
@@ -110,6 +111,7 @@ function getMapData() {
           },
           {
             "type": "Bar",
+            "title": "Tonic Bar and Grill",
             "name": "Tonic",
             "lat": "40.44369742276764",
             "lon": "-79.99541569501162",
@@ -121,6 +123,7 @@ function getMapData() {
           },
           {
             "type": "Restaurant",
+            "title": "The Zenith",
             "name": "Zenith",
             "lat": "40.426466824353994",
             "lon": "-79.96901705861092",
