@@ -39,6 +39,16 @@ html, body, #map-canvas {
   color: black;
 }
 
+#filteredResults {
+  list-style: none;
+}
+
+.zebraHover {
+  background-color: #FFB523;
+  font-weight: bold;
+  color: white;
+}
+
 .iyn-button {
   background-color: white;
 }
