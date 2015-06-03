@@ -47,14 +47,7 @@
 	    zoom: zoom,
 	    center: currentCity
 	  };
-
 	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-	  //TODO: Remove this event listener once we have all the markers we need in our
-	  //			JSON file
-	  google.maps.event.addListener(map, 'click', function(event) {
-	  	addMarker(event.latLng);
-	  });
 	}
 
 	/***
@@ -69,21 +62,11 @@
 	/***
 	 * filterModel()
 	 *	This is the KnockoutJS model for the page
-	 *	 - Filter the markers
 	 *	 - load the City selector
 	 ***/
 	function filterModel() {
 		var self = this;
 
-		//Filters for the markers
-		self.markers = [
-			{ "name": "All" },
-			{ "name": "Restaurants" },
-			{ "name": "Bars" }];
-		self.chosenMarker = ko.observable();
-		self.resetMarker = function() { self.chosenMarker(null)};
-
-		//Load the city selector
 		self.cities = jsonData.cities;
 		self.chosenCity = ko.observable();
 		self.chosenCity.subscribe(function() {
@@ -101,8 +84,13 @@
 	 ***/
 	function addMarkers(markers) {
 		for (var location in markers) {
-			loc = new google.maps.LatLng(markers[location].lat, markers[location].lon);
-			addMarker(loc, markers[location].content, markers[location].yelp, markers[location].name, markers[location].title);
+			var loc = new google.maps.LatLng(markers[location].lat, markers[location].lon);
+			var content = markers[location].content;
+			var yelp = markers[location].yelp;
+			var name = markers[location].name;
+			var title = markers[location].title;
+			var type = markers[location].type;
+			addMarker(loc, content, yelp, name, title, type);
 		}
 		setListStyle();
 	}
@@ -114,11 +102,12 @@
 	 *	 - info is what shows up in the box when you click the marker
 	 *	 - name is the name of the location
 	 ***/
-	function addMarker(location, info, yelp, name, title) {
+	function addMarker(location, info, yelp, name, title, type) {
 		var marker = new google.maps.Marker({
 			position: location,
 			map: map,
-			title: title
+			title: title,
+			type: type
 		});
 
 		google.maps.event.addDomListener(marker, 'rightclick', function() {
@@ -137,7 +126,7 @@
 			}
   	});
 
-  	addListItem(title, name, marker);
+  	addListItem(title, name, marker, type);
 	}
 
 	/***
@@ -212,8 +201,8 @@
 	 * This will populate the list of results on the left side, and be clickable
 	 * to allow invoking the infobox on the marker
 	 */
-	function addListItem(name, id, marker) {
-		item = "<li id='" + id + "-li'>" + name + "</li>"
+	function addListItem(name, id, marker, type) {
+		item = "<li id='" + id + "-li' class='" + type + "'>" + name + "</li>"
 		$('#filteredResults').append(item);
 		$('#' + id +"-li").click(function() {
 			console.log("click");
@@ -240,6 +229,16 @@
 	 ***/
 	function removeListItems() {
 		$('#filteredResults').empty();
+	}
+
+	/***
+	 * filterList(type)
+	 *	remove items from list based on type
+	 *
+	 ***/
+	function filterList(type) {
+		var results = $('#filteredResults').children("[class != '" + type + "']");
+		results.empty();
 	}
 
 	/***
