@@ -57,6 +57,7 @@
 	 ***/
 	function setTitle(city) {
 		$('#title').text(city + ": Things to see and do");
+		$('#listHeader').text(city + ": places");
 	}
 
 	/***
@@ -66,7 +67,6 @@
 	 ***/
 	function filterModel() {
 		var self = this;
-
 		self.cities = jsonData.cities;
 		self.chosenCity = ko.observable();
 		self.chosenCity.subscribe(function() {
