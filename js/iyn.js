@@ -9,6 +9,8 @@
 	var map;
 	var mapfilter = getMapFilters();
 	var jsonData = getMapData();
+	var availableItems = [];
+
 	//Removed keys
 	var auth = {
 		consumerKey: "<consumerKey>",
@@ -48,6 +50,7 @@
 	    center: currentCity
 	  };
 	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	  availableItems = [];
 	}
 
 	/***
@@ -93,6 +96,11 @@
 			addMarker(loc, content, yelp, name, title, type);
 		}
 		setListStyle();
+		$( "#searchList" ).autocomplete({source: availableItems});
+		$("#searchList").on("autocompleteselect", function(event, ui) {
+			var selected = ui.item.value;
+			$("#" + selected + "-li").click();
+		});
 	}
 
 	/***
@@ -208,6 +216,8 @@
 			console.log("click");
 			google.maps.event.trigger(marker, 'click');
 		});
+		availableItems.push(id);
+		console.log(availableItems);
 	}
 
 	/***

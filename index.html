@@ -5,6 +5,7 @@
     <title>In Your Neighborhood</title>
     <link href="css/iyn.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/jquery-ui/themes/base/jquery-ui.css" re="stylesheet">
     <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
@@ -46,6 +47,10 @@
         <div class="row">
           <div class="col-md-2">
               <!-- List of results -->
+              <div class="ui-widget">
+                <label for="searchList">Search: </label>
+                <input id="searchList" class="ui-autocomplete-input" autocomplete="on">
+              </div>
               <div id="filteredList">
                 <h4 id="listHeader"></h4>
                 <ul id="filteredResults">
@@ -61,6 +66,7 @@
     <!-- Put JS imports after this line -->
     <!-- Bower Components -->
     <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/knockout/dist/knockout.js"></script>
 
