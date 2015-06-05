@@ -19,7 +19,7 @@ html, body, #map-canvas {
   padding: 10px;
 }
 
-#locationField {
+#location-field {
   overflow: hidden;
   margin: 5px;
   padding: 2px;
@@ -39,7 +39,7 @@ html, body, #map-canvas {
   color: black;
 }
 
-#filteredResults {
+#filtered-results {
   list-style: none;
 }
 

@@ -60,7 +60,7 @@
 	 ***/
 	function setTitle(city) {
 		$('#title').text(city + ": Things to see and do");
-		$('#listHeader').text(city + ": places");
+		$('#list-header').text(city + ": places");
 	}
 
 	/***
@@ -96,8 +96,8 @@
 			addMarker(loc, content, yelp, name, title, type);
 		}
 		setListStyle();
-		$( "#searchList" ).autocomplete({source: availableItems});
-		$("#searchList").on("autocompleteselect", function(event, ui) {
+		$("#search-list").autocomplete({source: availableItems});
+		$("#search-list").on("autocompleteselect", function(event, ui) {
 			var selected = ui.item.value;
 			$("#" + selected + "-li").click();
 			//now clear the search box
@@ -213,7 +213,7 @@
 	 ***/
 	function addListItem(name, id, marker, type) {
 		item = "<li id='" + id + "-li' class='" + type + "'>" + name + "</li>"
-		$('#filteredResults').append(item);
+		$('#filtered-results').append(item);
 		$('#' + id +"-li").click(function() {
 			console.log("click");
 			google.maps.event.trigger(marker, 'click');
@@ -227,11 +227,11 @@
 	 * Set a hover style for the list
 	 ***/
 	function setListStyle() {
-		$('#filteredResults li').mouseover(function() {
-			$(this).addClass('zebraHover');
+		$('#filtered-results li').mouseover(function() {
+			$(this).addClass('zebra-hover');
 		});
-		$('#filteredResults li').mouseout(function() {
-			$(this).removeClass('zebraHover');
+		$('#filtered-results li').mouseout(function() {
+			$(this).removeClass('zebra-hover');
 		});
 	}
 
@@ -240,7 +240,7 @@
 	 *	clear the list of items
 	 ***/
 	function removeListItems() {
-		$('#filteredResults').empty();
+		$('#filtered-results').empty();
 	}
 
 	/***
