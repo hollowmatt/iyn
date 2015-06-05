@@ -43,8 +43,8 @@ html, body, #map-canvas {
   list-style: none;
 }
 
-.zebraHover {
-  background-color: #FFB523;
+.zebra-hover {
+  background-color: #ffb523;
   font-weight: bold;
   color: white;
 }
@@ -57,12 +57,12 @@ html, body, #map-canvas {
 
 .infobox {
   font-weight: lighter;
-  color: #00008B;
+  color: #00008b;
 }
 
 .infotitle {
   font-weight: bold;
-  color: #483D8B;
+  color: #483d8b;
 }
 
 .infobody {
@@ -70,7 +70,7 @@ html, body, #map-canvas {
 }
 
 .infourl {
-  color: #4169E1;
+  color: #4169e1;
   text-decoration: none;
 }
 
