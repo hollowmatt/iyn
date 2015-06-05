@@ -100,6 +100,8 @@
 		$("#searchList").on("autocompleteselect", function(event, ui) {
 			var selected = ui.item.value;
 			$("#" + selected + "-li").click();
+			//now clear the search box
+			$(this).val(''); return false;
 		});
 	}
 
@@ -208,7 +210,7 @@
 	 * addListItem(name, id)
 	 * This will populate the list of results on the left side, and be clickable
 	 * to allow invoking the infobox on the marker
-	 */
+	 ***/
 	function addListItem(name, id, marker, type) {
 		item = "<li id='" + id + "-li' class='" + type + "'>" + name + "</li>"
 		$('#filteredResults').append(item);
@@ -235,20 +237,10 @@
 
 	/***
 	 * removeListItems()
-	 *	clear the list
+	 *	clear the list of items
 	 ***/
 	function removeListItems() {
 		$('#filteredResults').empty();
-	}
-
-	/***
-	 * filterList(type)
-	 *	remove items from list based on type
-	 *
-	 ***/
-	function filterList(type) {
-		var results = $('#filteredResults').children("[class != '" + type + "']");
-		results.empty();
 	}
 
 	/***
