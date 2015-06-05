@@ -5,7 +5,7 @@
     <title>In Your Neighborhood</title>
     <link href="css/iyn.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="bower_components/jquery-ui/themes/base/jquery-ui.css" re="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
@@ -45,12 +45,16 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-12">
               <!-- List of results -->
               <div class="ui-widget">
                 <label for="searchList">Search: </label>
-                <input id="searchList" class="ui-autocomplete-input" autocomplete="on">
+                <input id="searchList" class="ui-autocomplete-input" autocomplete="on"/>
               </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
               <div id="filteredList">
                 <h4 id="listHeader"></h4>
                 <ul id="filteredResults">
