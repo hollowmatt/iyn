@@ -5,7 +5,17 @@
 html, body, #map-canvas {
   height: 800px;
   width: 100%;
-  padding-bottom: 5%;
+  padding: 5px;
+  margin: 5px;
+}
+
+#no-data-map p {
+  border: 5px solid gray;
+  color: gray;
+  font-size: 2.0em;
+  height: 600px;
+  padding: 20% 40px 40% 40px;
+  text-align: center;
 }
 
 #content-header {

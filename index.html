@@ -31,7 +31,7 @@
       <div class="container-fluid">
         <div class="row" id="content-header">
           <div id="location-field">
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div id="city-select">
                <select data-bind="options:cities,
                                   optionsCaption: 'Select City',
@@ -39,7 +39,7 @@
                                   value:chosenCity"></select>
               </div>
             </div>
-            <div class="col-md-4" align='right'>
+            <div class="col-md-6" align='right'>
               <span id="title">Mountain View: Things to see and do</span>
             </div>
           </div>
@@ -62,7 +62,15 @@
               </div>
           </div>
           <div class="col-md-10">
-            <div id="map-canvas"></div>
+            <div id="map-canvas">
+              <div id="no-data-map">
+                <p>
+                  Please wait while the map data loads.  If you do not see the   
+                  map shortly, please ensure you have an active data connection 
+                  in order to use this site.
+                </p>
+              </div>  
+            </div>
           </div>
         </div>
       </div>
