@@ -3,13 +3,13 @@
 	/***
 	 * Setup our variables:
 	 * - map -> this is the Google Map object
-	 * - mapfilter -> what will will filter the markers based on
 	 * - jsonData -> this will contain all of the info form our JSON object
 	 ***/
 	var map;
-	var mapfilter = getMapFilters();
 	var jsonData = getMapData();
 	var availableItems = [];
+	var currWindow = null;
+	var currMarker = null;
 
 	//Removed keys
 	var auth = {
@@ -120,20 +120,32 @@
 			type: type
 		});
 
-		google.maps.event.addDomListener(marker, 'rightclick', function() {
-  		removeMarker(marker);
-  	});
-
 		var infoWindow = new google.maps.InfoWindow({
 			content: info.join('')
 		});
 
   	google.maps.event.addDomListener(marker, 'click', function() {
+  		//Two 'if' statements to reset infoboxes and markers
+  		if (currWindow) {
+  			currWindow.close();
+  		}
+
+  		if (currMarker) {
+  			currMarker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+  		}
+
+  		//set the current infoWindow and Marker to this one if clicked.
+  		currWindow = infoWindow;
+  		currMarker = marker;
   		infoWindow.open(map, marker);
 
   		if (yelp) {
 				getYelpInfo(yelp, name);
 			}
+
+			//on click, pan map to marker location, and set the new icon type.
+			map.panTo(marker.position);
+			marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
   	});
 
   	addListItem(title, name, marker, type);
@@ -215,7 +227,6 @@
 		item = "<li id='" + id + "-li' class='" + type + "'>" + name + "</li>"
 		$('#filtered-results').append(item);
 		$('#' + id +"-li").click(function() {
-			console.log("click");
 			google.maps.event.trigger(marker, 'click');
 		});
 		availableItems.push(id);
