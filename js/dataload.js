@@ -1,3 +1,4 @@
+//This file has all of the data and data-manipulation functions
 function getMapData() {
   var mapData = {
     "cities": [
@@ -138,9 +139,4 @@ function getMapData() {
     ]
   }
   return mapData;
-}
-
-function getMapFilters() {
-  var filters = { "1": "All", "2": "Restaurants", "3": "Bars" };
-  return filters;
 }
