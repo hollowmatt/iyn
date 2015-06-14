@@ -75,7 +75,7 @@
 		self.chosenCity.subscribe(function() {
 			buildMap(self.chosenCity().lat, self.chosenCity().lon, self.chosenCity().zoom);
 			setTitle(self.chosenCity().Name);
-			removeListItems();
+			$('#filtered-results').empty();
 			addMarkers(self.chosenCity().places);
 		});
 	}
@@ -244,14 +244,6 @@
 		$('#filtered-results li').mouseout(function() {
 			$(this).removeClass('zebra-hover');
 		});
-	}
-
-	/***
-	 * removeListItems()
-	 *	clear the list of items
-	 ***/
-	function removeListItems() {
-		$('#filtered-results').empty();
 	}
 
 	/***
