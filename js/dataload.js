@@ -137,6 +137,6 @@ function getMapData() {
         ]
       }
     ]
-  }
+  };
   return mapData;
 }
