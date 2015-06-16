@@ -2,7 +2,9 @@
 		border: 1px solid green;
 }
 */
-html, body, #map-canvas {
+html,
+body,
+#map-canvas {
   height: 800px;
   width: 100%;
   padding: 5px;
@@ -95,5 +97,4 @@ html, body, #map-canvas {
   float: left;
   padding: 2px;
 }
-
 /* end of Info Box */

@@ -47,7 +47,8 @@
 		var currentCity =  new google.maps.LatLng(lat,lon); //city data passed in
 		var mapOptions = {
 	    zoom: zoom,
-	    center: currentCity
+	    center: currentCity,
+	    disableDefaultUI: true
 	  };
 	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	  availableItems = [];
