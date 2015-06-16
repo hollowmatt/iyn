@@ -86,15 +86,15 @@
 	 *	call the addMarker function for each place
 	 ***/
 	function addMarkers(markers) {
-		for (var location in markers) {
-			var loc = new google.maps.LatLng(markers[location].lat, markers[location].lon);
-			var content = markers[location].content;
-			var yelp = markers[location].yelp;
-			var name = markers[location].name;
-			var title = markers[location].title;
-			var type = markers[location].type;
+		markers.forEach(function(location) {
+			var loc = new google.maps.LatLng(location.lat, location.lon);
+			var content = location.content;
+			var yelp = location.yelp;
+			var name = location.name;
+			var title = location.title;
+			var type = location.type;
 			addMarker(loc, content, yelp, name, title, type);
-		}
+		});
 		setListStyle();
 		$("#search-list").autocomplete({source: availableItems});
 		$("#search-list").on("autocompleteselect", function(event, ui) {
