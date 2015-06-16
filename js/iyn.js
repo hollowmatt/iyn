@@ -193,7 +193,7 @@
 			 cache: true
 		}).success(function(data) {
 			var busPhone = data.businesses[0].display_phone;
-			var busRating = data.businesses[0].rating_img_url
+			var busRating = data.businesses[0].rating_img_url;
 
 			//check to see if we already added the yelp stuff
 			var exists = $('#' + data.businesses[0].id).length;
@@ -209,22 +209,12 @@
 	}
 
 	/***
-	 * removeMarker(marker)
-	 * 	This will remove a marker from the map
-	 *	TODO: Remove this function, used for map setup of JSON data
-	 ***/
-	function removeMarker(marker) {
-		console.log(marker);
-		marker.setVisible(false);
-	}
-
-	/***
 	 * addListItem(name, id)
 	 * This will populate the list of results on the left side, and be clickable
 	 * to allow invoking the infobox on the marker
 	 ***/
 	function addListItem(name, id, marker, type) {
-		item = "<li id='" + id + "-li' class='" + type + "'>" + name + "</li>"
+		var item = "<li id='" + id + "-li' class='" + type + "'>" + name + "</li>";
 		$('#filtered-results').append(item);
 		$('#' + id +"-li").click(function() {
 			google.maps.event.trigger(marker, 'click');
