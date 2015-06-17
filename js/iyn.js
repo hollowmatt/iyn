@@ -1,3 +1,4 @@
+"use strict";
 // This function initializes the Google Map to Mountain View, with a zoomed in view
 (function() {
 	/***
@@ -203,8 +204,7 @@
 				$yelpElem.append("<p><img src='" + busRating + "'>");
 			}
 		}).error(function(e) {
-			console.log("an error has occured");
-			console.log(e);
+			console.log("an error has occured: likely with the YELP API key");
 		});
 	}
 
@@ -220,7 +220,6 @@
 			google.maps.event.trigger(marker, 'click');
 		});
 		availableItems.push(id);
-		console.log(availableItems);
 	}
 
 	/***

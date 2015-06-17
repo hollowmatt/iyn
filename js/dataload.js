@@ -1,3 +1,4 @@
+"use strict";
 //This file has all of the data and data-manipulation functions
 function getMapData() {
   var mapData = {
