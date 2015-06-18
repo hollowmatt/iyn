@@ -4,14 +4,14 @@
 */
 html,
 body,
-#map-canvas {
+.map-canvas {
   height: 800px;
   width: 100%;
   padding: 5px;
   margin: 5px;
 }
 
-#no-data-map p {
+.no-data-map p {
   border: 5px solid gray;
   color: gray;
   font-size: 2.0em;
@@ -20,15 +20,10 @@ body,
   text-align: center;
 }
 
-#content-header {
+.content-header {
 	background-color: darkGray;
 	color: white;
 	margin-bottom: 10px;
-}
-
-#legend {
-  background: white;
-  padding: 10px;
 }
 
 #location-field {
