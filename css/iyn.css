@@ -2,6 +2,10 @@
 		border: 1px solid green;
 }
 */
+#filtered-results {
+  list-style: none;
+}
+
 html,
 body,
 .map-canvas {
@@ -35,10 +39,6 @@ body,
   color: black;
 }
 
-#filtered-results {
-  list-style: none;
-}
-
 .zebra-hover {
   background-color: #ffb523;
   font-weight: bold;
@@ -47,6 +47,10 @@ body,
 
 .iyn-button {
   background-color: white;
+}
+
+.right-justify {
+  text-align: right;
 }
 
 /*Info Box Styling - for the infobox on map markers*/
