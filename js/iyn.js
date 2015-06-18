@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // This function initializes the Google Map to Mountain View, with a zoomed in view
 (function() {
 	/***
@@ -14,12 +14,12 @@
 
 	//Removed keys
 	var auth = {
-		consumerKey: "<consumerKey>",
-		consumerSecret: "<consumerSecret>",
-		accessToken: "<accessToken>",
-		accessTokenSecret: "<accessTokenSecret>",
+		consumerKey: '<consumerKey>',
+		consumerSecret: '<consumerSecret>',
+		accessToken: '<accessToken>',
+		accessTokenSecret: '<accessTokenSecret>',
 		serviceProvider: {
-			signatureMethod: "HMAC-SHA1"
+			signatureMethod: 'HMAC-SHA1'
 		}
 	};
 
@@ -61,8 +61,8 @@
 	 *	- Take in the city name to put in the title
 	 ***/
 	function setTitle(city) {
-		$('.title').text(city + ": Things to see and do");
-		$('.list-header').text(city + ": places");
+		$('.title').text(city + ': Things to see and do');
+		$('.list-header').text(city + ': places');
 	}
 
 	/***
@@ -98,10 +98,10 @@
 			addMarker(loc, content, yelp, name, title, type);
 		});
 		setListStyle();
-		$("#search-list").autocomplete({source: availableItems});
-		$("#search-list").on("autocompleteselect", function(event, ui) {
+		$('#search-list').autocomplete({source: availableItems});
+		$('#search-list').on('autocompleteselect', function(event, ui) {
 			var selected = ui.item.value;
-			$("#" + selected + "-li").click();
+			$('#' + selected + '-li').click();
 			//now clear the search box
 			$(this).val(''); return false;
 		});
@@ -190,7 +190,7 @@
     $.ajax({
 			 url: message.action,
 			 data: parameterMap,
-			 dataType: "jsonp",
+			 dataType: 'jsonp',
 			 cache: true
 		}).success(function(data) {
 			var busPhone = data.businesses[0].display_phone;
@@ -199,12 +199,12 @@
 			//check to see if we already added the yelp stuff
 			var exists = $('#' + data.businesses[0].id).length;
 			if(exists < 1) {
-				$yelpElem.append("<div class='infoyelplogo' id=" + data.businesses[0].id + "><img src='images/yelp_logo_75x38.png'></div>");
-				$yelpElem.append("<p>Phone number: " + busPhone + "</p>");
-				$yelpElem.append("<p><img src='" + busRating + "'>");
+				$yelpElem.append('<div class="infoyelplogo" id=' + data.businesses[0].id + '><img src="images/yelp_logo_75x38.png"></div>');
+				$yelpElem.append('<p>Phone number: ' + busPhone + '</p>');
+				$yelpElem.append('<p><img src="' + busRating + '">');
 			}
 		}).error(function(e) {
-			console.log("an error has occured: likely with the YELP API key");
+			console.log('an error has occured: likely with the YELP API key');
 		});
 	}
 
@@ -214,9 +214,9 @@
 	 * to allow invoking the infobox on the marker
 	 ***/
 	function addListItem(name, id, marker, type) {
-		var item = "<li id='" + id + "-li' class='" + type + "'>" + name + "</li>";
+		var item = '<li id="' + id + '-li" class="' + type + '">' + name + '</li>';
 		$('#filtered-results').append(item);
-		$('#' + id +"-li").click(function() {
+		$('#' + id +'-li').click(function() {
 			google.maps.event.trigger(marker, 'click');
 		});
 		availableItems.push(id);
