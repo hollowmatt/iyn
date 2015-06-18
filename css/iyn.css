@@ -26,23 +26,12 @@ body,
 	margin-bottom: 10px;
 }
 
-#location-field {
-  overflow: hidden;
-  margin: 5px;
-  padding: 2px;
-}
-
-#autocomplete {
-	color: darkGray;
-	width: 100%;
-}
-
-#title {
+.title {
   font-weight: bold;
   font-size: 1.2em;
 }
 
-#city-select {
+.city-select {
   color: black;
 }
 

@@ -61,8 +61,8 @@
 	 *	- Take in the city name to put in the title
 	 ***/
 	function setTitle(city) {
-		$('#title').text(city + ": Things to see and do");
-		$('#list-header').text(city + ": places");
+		$('.title').text(city + ": Things to see and do");
+		$('.list-header').text(city + ": places");
 	}
 
 	/***
